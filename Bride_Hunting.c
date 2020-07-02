@@ -4,8 +4,8 @@ int main()
 	
 	int max_i,max_j,max=0;
 	int n1,n2;
-	int arr[100][100];
-	int qualities[100][100]={0};
+	long int arr[100][100];
+	long int qualities[100][100]={0};
 	
 	
 	scanf("%d %d",&n1,&n2);
@@ -13,7 +13,7 @@ int main()
 	{
 		for(int j=0; j <n2; j++)
 		{
-			scanf("%d",&arr[i][j]);
+			scanf("%ld",&arr[i][j]);
 		}
 	}
 	
@@ -45,9 +45,16 @@ int main()
 					}
 				}
 				//printf("max %d < qualities :%d  i:%d j:%d\n",max,qualities[i][j],i,j);
+
 				if(max <qualities[i][j])
 				{
 					//printf("max %d = qualities :%d \n",max,qualities[i][j]);
+					max=qualities[i][j];
+					max_i = i;
+					max_j = j;
+				}
+				else if(max ==qualities[i][j] && (max_i>i || max_j >j))
+				{
 					max=qualities[i][j];
 					max_i = i;
 					max_j = j;
@@ -56,7 +63,8 @@ int main()
 			}
 		}
 	}
-	printf("%d:%d:%d \n",max_i+1,max_j+1,qualities[max_i][max_j]);
+
+	printf("%d:%d:%ld \n",max_i+1,max_j+1,qualities[max_i][max_j]);
 
 	
 	return 0;
